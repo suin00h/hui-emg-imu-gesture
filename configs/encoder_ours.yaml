@@ -25,4 +25,4 @@ interventions:
     target: rms      # of the source-standardised signal
   channel_rotation:
     span: 1
-    classes: arm
+    classes: all
