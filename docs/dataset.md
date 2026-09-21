@@ -81,3 +81,8 @@ data cannot be re-cut at a different window length.
   sessions rather than five.
 - File sizes split into two groups (S01–S05 around 290 MB, S06–S11 around 125 MB) because the signal
   compresses differently; the window counts are comparable.
+
+## Licence
+
+The recordings are released under CC BY 4.0. The code in this repository is MIT; see `LICENSE` and
+`LICENSE-DATA`.

@@ -22,4 +22,5 @@ keywords:
   - cross-user generalization
   - one-shot learning
 repository-code: https://github.com/suin00h/hui-emg-imu-gesture
-license: TBD
+license: MIT            # source code
+license-url: https://creativecommons.org/licenses/by/4.0/   # the recordings are CC BY 4.0
