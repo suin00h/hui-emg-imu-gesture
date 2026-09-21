@@ -1,0 +1,6 @@
+dataset/
+checkpoints/
+runs/
+runs_*.log
+__pycache__/
+*.pyc

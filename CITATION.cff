@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: If you use this dataset or code, please cite the paper and the dataset record.
+title: hui-emg-imu-gesture
+abstract: >-
+  A cross-user one-shot enrolment benchmark for gesture recognition from a nine-electrode forearm
+  EMG ring and an upper-arm inertial sensor, with eleven subjects, five sessions and sixteen
+  gestures spanning finger-counting postures and arm commands.
+authors:
+  - family-names: TBD
+    given-names: TBD
+keywords:
+  - electromyography
+  - inertial measurement unit
+  - gesture recognition
+  - cross-user generalisation
+  - one-shot learning
+license: TBD

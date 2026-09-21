@@ -1,0 +1,19 @@
+emg:
+  bandpass: [20.0, 450.0]
+  order: 4
+  rectify: abs
+  lowpass: 30.0          # also the anti-alias filter for the decimation below
+  decimate: 10           # 1000 Hz -> 100 Hz
+  zero_phase: true       # filtfilt, applied within each window independently
+
+imu:
+  channels: [acc, gyro]
+  lowpass: 20.0
+  acc_highpass: 0.5      # gravity removal, accelerometer channels only
+  order: 4
+
+normalize:
+  per_window: none       # deliberately absent: per-window z-scoring erases the inter-channel
+                         # amplitude pattern the masked-electrode objective operates on
+  fold: source_zscore    # per-channel, fitted on the source subjects, clipped to +-5
+  features: source_zscore

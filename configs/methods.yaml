@@ -1,0 +1,16 @@
+# Published defaults unless noted. This file is the record of what each method was given.
+source-only: {}
+statistic-alignment: {}
+subspace-alignment: {k: 32}
+procrustes: {}
+simpleshot: {centre: true}
+protonet: {alpha: 1.0}
+logistic-refit: {C: 1.0, max_iter: 2000, class_weight: balanced}
+
+tim:        {temp: 15, steps: 300, lr: 1.0e-3, w_ce: 0.1, w_marg: 1.0, w_cond: 0.1}
+alpha-tim:  {tsallis_alpha: 7.0, temp: 15, steps: 300, lr: 1.0e-3}
+ptmap:      {beta: 0.5, iters: 20, sinkhorn_reg: 0.05}
+protolp:    {lam: 1.0, alpha: 0.2, steps: 5}
+pslp:       {B: 8, gamma: 10, T: 10, alpha: 0.9, beta: 0.2, pca: 40}
+
+prototype-rectification: {alpha: 0.7, prior: 0.25, iters: 3, temperature: 1.0}

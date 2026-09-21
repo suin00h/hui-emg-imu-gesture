@@ -1,0 +1,20 @@
+model:
+  d_model: 128
+  num_heads: 4
+  num_layers: 4
+  ffn_dim: 256
+  dropout: 0.1
+  n_bottleneck: 32
+  fusion_layer: 2        # must be <= num_layers - 2 or the branches stay independent
+
+train:
+  max_epochs: 100
+  batch_size: 128
+  lr: 1.0e-3
+  weight_decay: 1.0e-2
+  warmup_epochs: 5
+  val_ratio: 0.2
+  select_on: val_f1
+  seed: 42
+
+interventions: {}
