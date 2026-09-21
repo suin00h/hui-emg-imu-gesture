@@ -1,17 +1,25 @@
 cff-version: 1.2.0
-message: If you use this dataset or code, please cite the paper and the dataset record.
+message: If you use this dataset or code, please cite the paper.
 title: hui-emg-imu-gesture
 abstract: >-
-  A cross-user one-shot enrolment benchmark for gesture recognition from a nine-electrode forearm
-  EMG ring and an upper-arm inertial sensor, with eleven subjects, five sessions and sixteen
-  gestures spanning finger-counting postures and arm commands.
+  A multimodal gesture dataset and cross-user benchmark. Eleven subjects were recorded over five
+  sessions wearing a nine-channel forearm EMG band and an upper-arm IMU, performing eleven arm
+  commands and five finger-counting postures. The repository provides the recording, a
+  session-separated one-shot enrollment protocol, and implementations of the adaptation methods
+  compared in the paper.
+type: dataset
 authors:
-  - family-names: TBD
-    given-names: TBD
+  - family-names: Hwang
+    given-names: Suin
+  - family-names: Jo
+    given-names: Geonhui
+  - family-names: Suh
+    given-names: Sungho
 keywords:
   - electromyography
   - inertial measurement unit
   - gesture recognition
-  - cross-user generalisation
+  - cross-user generalization
   - one-shot learning
+repository-code: https://github.com/suin00h/hui-emg-imu-gesture
 license: TBD
