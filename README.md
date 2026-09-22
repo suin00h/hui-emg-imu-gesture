@@ -4,13 +4,14 @@
 
 ![](assets/readme-header.png)
 
-Surface EMG from a nine-channel forearm band and inertial data from the upper arm, recorded while
-eleven people performed sixteen gestures in five sessions each: eleven arm commands and five
-finger-counting postures. The two groups are carried by different sensors and transfer very
-differently to a wearer the model has never seen. Given one labelled example per gesture, arm
-commands reach 84.2% macro-F1 and counting postures 47.0%. This release contains the recordings, the
-one-shot cross-user enrollment protocol that gap is measured under, and the adaptation methods
-compared in the paper.
+A gesture dataset for cross-user recognition, pairing surface EMG from a nine-channel forearm band
+with inertial data from the upper arm. Eleven people performed sixteen gestures in five sessions
+each: eleven arm commands and five finger-counting postures.
+
+The two groups are carried by different sensors and transfer very differently to a wearer the model
+has never seen. Given one labelled example per gesture, arm commands reach 84.2% macro-F1 and
+counting postures 47.0%. The release includes the one-shot enrollment protocol that gap is measured
+under, together with the adaptation methods compared in the paper.
 
 ## Setup
 
