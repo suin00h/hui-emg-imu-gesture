@@ -1,23 +1,36 @@
 # hui-emg-imu-gesture
 
-Eleven people wore a nine-channel EMG band on the forearm and an inertial sensor on the upper arm,
-and performed sixteen gestures in five sessions each: five finger-counting postures and eleven arm
-commands. This repository holds the recordings, the one-shot cross-user enrollment protocol they are
-evaluated under, and implementations of the adaptation methods compared in the paper.
+[ [`Paper`](TBD) ] [ [`Data`](https://github.com/suin00h/hui-emg-imu-gesture/releases/tag/v1.0-data) ] [ [`BibTeX`](#citation) ]
 
-Paper: TBD
+![](assets/readme-header.png)
+
+Surface EMG from a nine-channel forearm band and inertial data from the upper arm, recorded while
+eleven people performed sixteen gestures in five sessions each: eleven arm commands and five
+finger-counting postures. The two groups are carried by different sensors and transfer very
+differently to a wearer the model has never seen. Given one labelled example per gesture, arm
+commands reach 84.2% macro-F1 and counting postures 47.0%. This release contains the recordings, the
+one-shot cross-user enrollment protocol that gap is measured under, and the adaptation methods
+compared in the paper.
+
+## Setup
+
+```shell
+git clone https://github.com/suin00h/hui-emg-imu-gesture.git
+cd hui-emg-imu-gesture
+pip install -r requirements.txt
+
+python scripts/download.py     # dataset/ (2.2 GB) and checkpoints/ours/
+python scripts/verify.py       # checksums, shapes, and one published number
+```
+
+`--only S01.h5` fetches a single subject; `--skip-weights` leaves the trained encoders out.
 
 ## Data
 
-    python scripts/download.py
-    python scripts/verify.py
+One file per subject, `S01.h5` through `S11.h5`. Each holds raw 1 kHz EMG from nine electrodes and
+100 Hz inertial data from six channels, cut into 1.5 s windows at a 0.2 s step, with a gesture label
+and a session index per window. 62,776 windows in total.
 
-Downloads 11 subject files (2.2 GB) into `dataset/` and the trained encoders into
-`checkpoints/ours/`, then checks the files against their published checksums.
-`--only S01.h5` fetches a single subject; `--skip-weights` leaves the encoders out.
-
-Each file holds raw 1 kHz EMG from nine electrodes and 100 Hz inertial data from six channels, cut
-into 1.5 s windows at a 0.2 s step, with a gesture label and a session index per window. 62,776
-windows in total. Preprocessing is applied by the code rather than baked into the release, so the
-recordings can be used with a different front end. See [docs/dataset.md](docs/dataset.md) for the
-recording procedure, the gesture list, and known irregularities.
+Preprocessing is applied by the code rather than baked into the release, so the recordings can be
+used with a different front end. See [docs/dataset.md](docs/dataset.md) for the recording procedure,
+the gesture list, and known irregularities.
