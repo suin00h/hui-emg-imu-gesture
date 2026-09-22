@@ -1,10 +1,22 @@
 """The 16-class benchmark vocabulary."""
 
 CLASSES = [
-    "count_1", "count_2", "count_3", "count_4", "count_5",
-    "go_forward", "go_backward", "go_left", "go_right",
-    "raise_height", "lower_height", "speed_up", "speed_down",
-    "turn_counter_clockwise", "turn_clockwise", "stop_movement",
+    "count_1",
+    "count_2",
+    "count_3",
+    "count_4",
+    "count_5",
+    "push_forward",
+    "pull_backward",
+    "push_left",
+    "push_right",
+    "raise_hand",
+    "lower_hand",
+    "thumbs_up",
+    "thumbs_down",
+    "rotate_counter_clockwise",
+    "rotate_clockwise",
+    "raise_fist",
 ]
 
 # The two gesture groups the paper analyses separately. Both involve movement; what differs is where

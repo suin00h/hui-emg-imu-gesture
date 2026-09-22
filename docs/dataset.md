@@ -31,7 +31,6 @@ sensor on the upper arm. Sixteen gestures: five finger-counting postures and ele
 | S11 | 33 | F | 170 | 51 | R | 56 | 21 |
 
 All eleven wore the band on the right arm, including the one left-handed participant. Recordings
-were collected over two weeks.
 
 ## Files
 
@@ -52,11 +51,12 @@ and the worn arm.
 | index | name | group |
 |---|---|---|
 | 0–4 | `count_1` … `count_5` | counting — finger configuration |
-| 5–8 | `go_forward`, `go_backward`, `go_left`, `go_right` | arm |
-| 9–10 | `raise_height`, `lower_height` | arm |
-| 11–12 | `speed_up`, `speed_down` | arm |
-| 13–14 | `turn_counter_clockwise`, `turn_clockwise` | arm |
-| 15 | `stop_movement` | arm |
+| 5–6 | `push_forward`, `pull_backward` | arm |
+| 7–8 | `push_left`, `push_right` | arm |
+| 9–10 | `raise_hand`, `lower_hand` | arm |
+| 11–12 | `thumbs_up`, `thumbs_down` | arm |
+| 13–14 | `rotate_counter_clockwise`, `rotate_clockwise` | arm |
+| 15 | `raise_fist` | arm |
 
 The two groups are analysed separately throughout the paper because the class identity sits in
 different places: for a counting gesture in which fingers are extended, and so in which electrodes

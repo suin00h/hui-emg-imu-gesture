@@ -10,11 +10,12 @@ sys.path.insert(0, "/home/suin/workspace/omnisense")
 import h5py
 import numpy as np
 from configs.config import Config
-from data.labels import TICKLABELS, UNIFIED, UNIFIED_MAP, n_gesture_classes
+from data.labels import UNIFIED_MAP, n_gesture_classes
 from data.omnisense_dataset import OmniSenseDatasetBuilder
 
 OUT = Path("/home/suin/workspace/hui-emg-imu-gesture/dataset")
-CLASSES = TICKLABELS[UNIFIED][:-1]
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from src.labels import CLASSES
 
 
 def unified_label(exp, label):
