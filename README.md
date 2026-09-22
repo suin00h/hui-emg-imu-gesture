@@ -65,3 +65,41 @@ Held-out subject, one labelled window per gesture, macro-F1 over 636 enrollment 
 | + masked-electrode reconstruction and channel rotation | **76.00** | **49.33** | **88.12** |
 
 The full benchmark, including twelve other adaptation methods, is in the paper.
+
+## Usage
+
+Load one subject. Filtering and decimation are applied here, not in the release:
+
+```python
+from src.io import load_subject
+
+emg, imu, label, session = load_subject(1)   # (N, 150, 9), (N, 150, 6), (N,), (N,)
+```
+
+Reproduce the benchmark from the released encoders, one per held-out subject:
+
+```shell
+for S in $(seq 1 11); do
+  python scripts/extract_features.py --checkpoint checkpoints/ours/S$(printf %02d $S).ckpt \
+    --target $S --out runs/ours
+done
+python scripts/run_benchmark.py --features runs/ours --out runs/benchmark.csv
+```
+
+Train an encoder instead of downloading one. `--config configs/encoder_baseline.yaml` gives the row
+without the interventions; the two files differ only in their `interventions` block:
+
+```shell
+python scripts/train_encoder.py --config configs/encoder_ours.yaml --target 1
+```
+
+Output goes to `runs/<hash of the config>/`, so two configurations cannot share a feature cache.
+
+Redraw the signal panels used in the paper figures:
+
+```shell
+python scripts/make_figures.py
+```
+
+See [docs/reproduce.md](docs/reproduce.md) for the ablation and [docs/protocol.md](docs/protocol.md)
+for the evaluation protocol.
