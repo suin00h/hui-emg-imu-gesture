@@ -7,12 +7,31 @@ sensor on the upper arm. Sixteen gestures: five finger-counting postures and ele
 
 | | |
 |---|---|
-| Subjects | 11 (S01–S11), ages 23–39, 6 male / 5 female, forearm circumference 19–27 cm |
+| Subjects | 11 (S01–S11), ages 23–39, 6 male / 5 female |
 | Sessions | 5 per subject |
 | Worn arm | right, for every subject including the one left-handed participant |
 | Gestures | 16, plus rest |
 | Windows | 62,776 total — 24,145 gesture, 38,631 rest (5,475–6,432 per subject) |
 | Size | 2.2 GB, one file per subject |
+
+## Subjects
+
+| Subject | Age | Sex | Height (cm) | Weight (kg) | Dominant hand | Arm length (cm) | Arm circumference (cm) |
+|---|---:|:---:|---:|---:|:---:|---:|---:|
+| S01 | 25 | M | 174 | 76 | R | 56 | 25 |
+| S02 | 24 | M | 176 | 76 | R | 54 | 26 |
+| S03 | 25 | F | 161 | 49 | R | 52 | 20 |
+| S04 | 24 | M | 175 | 70 | L | 59 | 24 |
+| S05 | 23 | F | 167 | 49 | R | 51 | 19 |
+| S06 | 39 | M | 178 | 72 | R | 55 | 24 |
+| S07 | 38 | M | 170 | 80 | R | 54 | 27 |
+| S08 | 23 | F | 156 | 46 | R | 44 | 20 |
+| S09 | 27 | M | 177 | 73 | R | 51 | 25 |
+| S10 | 23 | F | 158 | 50 | R | 47 | 21 |
+| S11 | 33 | F | 170 | 51 | R | 56 | 21 |
+
+All eleven wore the band on the right arm, including the one left-handed participant. Recordings
+were collected over two weeks.
 
 ## Files
 
