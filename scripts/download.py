@@ -1,72 +1,66 @@
-"""Fetch the dataset and checkpoints from Zenodo.
+"""Fetch the dataset and trained weights from the GitHub release.
 
-    python scripts/download.py                  # everything
-    python scripts/download.py --only S01.h5
-
-Set ZENODO_TOKEN if the record is restricted.
+    python scripts/download.py                    # everything
+    python scripts/download.py --only S01.h5      # one subject
+    python scripts/download.py --skip-weights
 """
 import argparse
-import hashlib
-import os
+import json
 import sys
 import urllib.request
+import zipfile
 from pathlib import Path
 
-RECORD = None          # filled in once the record is published
+REPO = "suin00h/hui-emg-imu-gesture"
+TAG = "v1.0-data"
 ROOT = Path(__file__).resolve().parent.parent
+WEIGHTS = "checkpoints-ours.zip"
 
 
-def fetch_manifest(record):
-    url = f"https://zenodo.org/api/records/{record}"
-    req = urllib.request.Request(url)
-    token = os.environ.get("ZENODO_TOKEN")
-    if token:
-        req.add_header("Authorization", f"Bearer {token}")
-    import json
-    with urllib.request.urlopen(req) as r:
-        return json.load(r)["files"]
+def assets(repo, tag):
+    url = f"https://api.github.com/repos/{repo}/releases/tags/{tag}"
+    with urllib.request.urlopen(url) as r:
+        return json.load(r)["assets"]
 
 
-def download(entry, dest):
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    want = entry["checksum"].split(":")[-1]
-    if dest.exists() and md5(dest) == want:
+def get(asset, dest):
+    if dest.exists() and dest.stat().st_size == asset["size"]:
         print(f"  have {dest.name}")
         return
-    print(f"  get  {dest.name} ({entry['size'] / 1e6:.0f} MB)", flush=True)
-    req = urllib.request.Request(entry["links"]["self"])
-    token = os.environ.get("ZENODO_TOKEN")
-    if token:
-        req.add_header("Authorization", f"Bearer {token}")
-    with urllib.request.urlopen(req) as r, open(dest, "wb") as f:
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    print(f"  get  {dest.name} ({asset['size'] / 1e6:.0f} MB)", flush=True)
+    with urllib.request.urlopen(asset["browser_download_url"]) as r, open(dest, "wb") as f:
         while chunk := r.read(1 << 22):
             f.write(chunk)
-    if md5(dest) != want:
-        raise RuntimeError(f"checksum mismatch for {dest.name}")
-
-
-def md5(path):
-    h = hashlib.md5()
-    with open(path, "rb") as f:
-        for b in iter(lambda: f.read(1 << 22), b""):
-            h.update(b)
-    return h.hexdigest()
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--record", default=RECORD)
+    ap.add_argument("--repo", default=REPO)
+    ap.add_argument("--tag", default=TAG)
     ap.add_argument("--only", nargs="*")
+    ap.add_argument("--skip-weights", action="store_true")
     a = ap.parse_args()
-    if not a.record:
-        sys.exit("no Zenodo record id: pass --record")
-    for e in fetch_manifest(a.record):
-        name = e["key"]
+
+    for asset in assets(a.repo, a.tag):
+        name = asset["name"]
         if a.only and name not in a.only:
             continue
-        sub = "checkpoints" if name.startswith("checkpoints") else "dataset"
-        download(e, ROOT / sub / name)
+        if name == WEIGHTS:
+            if a.skip_weights:
+                continue
+            tmp = ROOT / WEIGHTS
+            get(asset, tmp)
+            with zipfile.ZipFile(tmp) as z:
+                z.extractall(ROOT)
+            tmp.unlink()
+            print(f"  unpacked {WEIGHTS}")
+        else:
+            get(asset, ROOT / "dataset" / name)
+
+    print("\nnow run: python scripts/verify.py")
 
 
 if __name__ == "__main__":
     main()
+
