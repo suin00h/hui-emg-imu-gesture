@@ -103,3 +103,12 @@ python scripts/make_figures.py
 
 See [docs/reproduce.md](docs/reproduce.md) for the ablation and [docs/protocol.md](docs/protocol.md)
 for the evaluation protocol.
+
+## Citation
+
+TBD
+
+## Licence
+
+Code is MIT. The recordings and the trained weights are CC BY 4.0.
+See [LICENSE](LICENSE) and [LICENSE-DATA](LICENSE-DATA).
