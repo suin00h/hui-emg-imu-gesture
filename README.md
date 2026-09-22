@@ -1,6 +1,6 @@
 # hui-emg-imu-gesture
 
-[ [`Paper`](TBD) ] [ [`Data`](https://github.com/suin00h/hui-emg-imu-gesture/releases/tag/v1.0-data) ] [ [`BibTeX`](#citation) ]
+<!-- [ [`Paper`](TBD) ] [ [`Data`](https://github.com/suin00h/hui-emg-imu-gesture/releases/tag/v1.0-data) ] [ [`BibTeX`](#citation) ] -->
 
 ![](assets/readme-header.png)
 
@@ -32,6 +32,32 @@ One file per subject, `S01.h5` through `S11.h5`. Each holds raw 1 kHz EMG from n
 100 Hz inertial data from six channels, cut into 1.5 s windows at a 0.2 s step, with a gesture label
 and a session index per window. 62,776 windows in total.
 
+Five counting postures, held still:
+
+![](assets/handgesture.png)
+
+Eleven arm commands, each a movement:
+
+![](assets/armgesture.png)
+
 Preprocessing is applied by the code rather than baked into the release, so the recordings can be
-used with a different front end. See [docs/dataset.md](docs/dataset.md) for the recording procedure,
-the gesture list, and known irregularities.
+used with a different front end. See [docs/dataset.md](docs/dataset.md) for the recording procedure
+and known irregularities.
+
+## Method
+
+![](assets/method.png)
+
+Both modalities are tokenized separately and exchange information only through a small set of shared
+bottleneck tokens, giving a 256-d representation per window. Two interventions act during training
+and leave inference unchanged: one electrode is hidden at random and its amplitude is predicted from
+the rest, and the electrode ring is cyclically shifted by one position.
+
+Held-out subject, one labelled window per gesture, macro-F1 over 636 enrollment episodes:
+
+| | All | Counting | Arm |
+|---|---:|---:|---:|
+| Prototype Rectification | 72.57 | 46.95 | 84.21 |
+| + masked-electrode reconstruction and channel rotation | **76.00** | **49.33** | **88.12** |
+
+The full benchmark, including twelve other adaptation methods, is in the paper.
