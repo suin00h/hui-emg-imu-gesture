@@ -7,8 +7,8 @@ CLASSES = [
     "turn_counter_clockwise", "turn_clockwise", "stop_movement",
 ]
 
-# The two gesture groups the paper analyses separately: held finger postures, read from which
-# electrode is loaded, and gross arm movements, read from temporal shape.
+# The two gesture groups the paper analyses separately. Both involve movement; what differs is where
+# the class identity sits -- in which fingers are extended, or in the trajectory of the arm.
 COUNTING = list(range(0, 5))
 ARM = list(range(5, 16))
 

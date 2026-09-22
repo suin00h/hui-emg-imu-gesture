@@ -32,15 +32,17 @@ and the worn arm.
 
 | index | name | group |
 |---|---|---|
-| 0–4 | `count_1` … `count_5` | counting — held finger postures |
+| 0–4 | `count_1` … `count_5` | counting — finger configuration |
 | 5–8 | `go_forward`, `go_backward`, `go_left`, `go_right` | arm |
 | 9–10 | `raise_height`, `lower_height` | arm |
 | 11–12 | `speed_up`, `speed_down` | arm |
 | 13–14 | `turn_counter_clockwise`, `turn_clockwise` | arm |
 | 15 | `stop_movement` | arm |
 
-The two groups are analysed separately throughout the paper because they are read from different
-things: a counting posture from which electrode is loaded, an arm command from temporal shape.
+The two groups are analysed separately throughout the paper because the class identity sits in
+different places: for a counting gesture in which fingers are extended, and so in which electrodes
+are loaded; for an arm command in the trajectory of the arm. Both involve movement -- a counting
+block is a sequence of form-and-release repetitions, not a static hold.
 
 Twenty-three gestures were recorded. Seven are not published: six pointing gestures, which duplicate
 the arm group's directional commands, and a thigh tap, which is not a robot command. Calibration

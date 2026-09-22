@@ -32,13 +32,17 @@ One file per subject, `S01.h5` through `S11.h5`. Each holds raw 1 kHz EMG from n
 100 Hz inertial data from six channels, cut into 1.5 s windows at a 0.2 s step, with a gesture label
 and a session index per window. 62,776 windows in total.
 
-Five counting postures, held still:
+Five finger-counting postures:
 
 ![](assets/handgesture.png)
 
-Eleven arm commands, each a movement:
+Eleven arm commands:
 
 ![](assets/armgesture.png)
+
+Every block is a sequence of repetitions. Participants were told which gesture to perform but not
+how many repetitions to make or how fast, so block length and repetition rate vary within and
+between people.
 
 Preprocessing is applied by the code rather than baked into the release, so the recordings can be
 used with a different front end. See [docs/dataset.md](docs/dataset.md) for the recording procedure
