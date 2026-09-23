@@ -48,6 +48,8 @@ Preprocessing is applied by the code rather than baked into the release, so the 
 used with a different front end. See [docs/dataset.md](docs/dataset.md) for the recording procedure
 and known irregularities.
 
+Participants provided written consent before participating in the study and consented to the public sharing of the study data.
+
 ## Method
 
 ![](assets/method.png)
