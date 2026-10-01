@@ -1,4 +1,4 @@
-# hui-emg-imu-gesture
+# EMG-IMU Gesture Dataset
 
 <!-- [ [`Paper`](TBD) ] [ [`Data`](https://github.com/suin00h/hui-emg-imu-gesture/releases/tag/v1.0-data) ] [ [`BibTeX`](#citation) ] -->
 
